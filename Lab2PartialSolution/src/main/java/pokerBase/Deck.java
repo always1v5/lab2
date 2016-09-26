@@ -21,7 +21,12 @@ public class Deck {
 	}
 	
 	public Card Draw(){
-		//TODO - Implement the Draw method
-		return null;
+		
+		return  deckCards.remove(0);
+		
+	
+	}
+	public void DeckRemaining(){
+		System.out.println(deckCards.size());
 	}
 }
