@@ -38,15 +38,32 @@ public class Hand {
 
 	private static boolean isStraight(ArrayList<Card> cards, Card highCard) {
 		boolean bIsStraight = false;
-		if (CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == eRank.KING
+		/*if (CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == eRank.KING
 				&& CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank() == eRank.QUEEN
 				&& CardsInHand.get(eCardNo.FourthCard.getCardNo()).getRank() == eRank.JACK
 				&& CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank() == eRank.TEN) {
 			bIsStraight = true;
+		}*/
+		if (CardsInHand.get(eCardNo.FirstCard) == 14){
+			if (CardInHand.get(eCardNo.ThirdCard.getCardNo()) - CardInHand.get(eCardNo.SecondCard.getCardNo()) == 1 
+					&& CardInHand.get(eCardNo.FourthCard.getCardNo())- CardInHand.get(eCardNo.ThirdCard.getCardNo()==1)
+					&& CardInhand.get(eCardNo.FifthCard.getCardNo())- CardInHand.get(eCardNo.FourthCard.getCardNo() == 1)){
+				bIsStraight = true;
+				
+			}
+		if(CardInHand.get(eCardNo.SecondCard.getCardNo() - CardInHand.get(eCardNo.FirstCard.getCardNo() == 1))
+				&& CardInHand.get(eCardNo.ThirdCard.getCardNo()) - CardInHand.get(eCardNo.SecondCard.getCardNo()) == 1 
+				&& CardInHand.get(eCardNo.FourthCard.getCardNo())- CardInHand.get(eCardNo.ThirdCard.getCardNo()==1)
+				&& CardInhand.get(eCardNo.FifthCard.getCardNo())- CardInHand.get(eCardNo.FourthCard.getCardNo() == 1)){
+				bIsStraight = true;
 		}
+			}
+			
+		
 
 		return bIsStraight;
-	}
+	
+}
 
 	public static boolean isHandRoyalFlush(Hand h, HandScore hs) {
 
