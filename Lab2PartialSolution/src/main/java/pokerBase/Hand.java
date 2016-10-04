@@ -38,12 +38,7 @@ public class Hand {
 
 	private static boolean isStraight(ArrayList<Card> cards, Card highCard, Hand h) {
 		boolean bIsStraight = false;
-		/*if (CardsInHand.get(eCardNo.SecondCard.getCardNo()).geteRank() == eRank.KING
-				&& CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank() == eRank.QUEEN
-				&& CardsInHand.get(eCardNo.FourthCard.getCardNo()).getRank() == eRank.JACK
-				&& CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank() == eRank.TEN) {
-			bIsStraight = true;
-		}*/
+
 		if (h.CardsInHand.get(eCardNo.FirstCard.getCardNo()).getiCardNbr() == 14){
 			if (h.CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getiCardNbr() - h.CardsInHand.get(eCardNo.SecondCard.getCardNo()).getiCardNbr() == 1 
 					&& h.CardsInHand.get(eCardNo.FourthCard.getCardNo()).getiCardNbr()- h.CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getiCardNbr()==1
