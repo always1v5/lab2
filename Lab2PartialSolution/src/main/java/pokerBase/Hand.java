@@ -15,18 +15,18 @@ public class Hand {
 		return CardsInHand;
 	}
 
-	private static boolean isHandFlush(ArrayList<Card> cards) {
+	private static boolean isHandFlush(ArrayList<Card> cards, Hand h) {
 		
 		boolean bIsFlush = false;
 		// still need change the following question, actually it just the one question and we need do test one this .
 
-		if (getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == getCardsInHand().
+		if (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand().
 						get(eCardNo.SecondCard.getCardNo()).geteSuit()
-				&& getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == getCardsInHand().
+				&& h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand().
 						get(eCardNo.ThirdCard.getCardNo()).geteSuit()
-				&& getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == getCardsInHand()
+				&& h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand()
 						.get(eCardNo.FourthCard.getCardNo()).geteSuit()
-				&& getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == getCardsInHand()
+				&& h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand()
 						.get(eCardNo.FifthCard.getCardNo()).geteSuit()) {
 			bIsFlush = true;
 		
@@ -36,52 +36,46 @@ public class Hand {
 		return bIsFlush;
 	}
 
-	private static boolean isStraight(ArrayList<Card> cards, Card highCard) {
+	private static boolean isStraight(ArrayList<Card> cards, Card highCard, Hand h) {
 		boolean bIsStraight = false;
-		/*if (CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == eRank.KING
+		/*if (CardsInHand.get(eCardNo.SecondCard.getCardNo()).geteRank() == eRank.KING
 				&& CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank() == eRank.QUEEN
 				&& CardsInHand.get(eCardNo.FourthCard.getCardNo()).getRank() == eRank.JACK
 				&& CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank() == eRank.TEN) {
 			bIsStraight = true;
 		}*/
-		if (CardsInHand.get(eCardNo.FirstCard) == 14){
-			if (CardInHand.get(eCardNo.ThirdCard.getCardNo()) - CardInHand.get(eCardNo.SecondCard.getCardNo()) == 1 
-					&& CardInHand.get(eCardNo.FourthCard.getCardNo())- CardInHand.get(eCardNo.ThirdCard.getCardNo()==1)
-					&& CardInhand.get(eCardNo.FifthCard.getCardNo())- CardInHand.get(eCardNo.FourthCard.getCardNo() == 1)){
+		if (h.CardsInHand.get(eCardNo.FirstCard.getCardNo()).getiCardNbr() == 14){
+			if (h.CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getiCardNbr() - h.CardsInHand.get(eCardNo.SecondCard.getCardNo()).getiCardNbr() == 1 
+					&& h.CardsInHand.get(eCardNo.FourthCard.getCardNo()).getiCardNbr()- h.CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getiCardNbr()==1
+					&& h.CardsInHand.get(eCardNo.FifthCard.getCardNo()).getiCardNbr()- h.CardsInHand.get(eCardNo.FourthCard.getCardNo()).getiCardNbr() == 1){
 				bIsStraight = true;
 				
 			}
-		if(CardInHand.get(eCardNo.SecondCard.getCardNo() - CardInHand.get(eCardNo.FirstCard.getCardNo() == 1))
-				&& CardInHand.get(eCardNo.ThirdCard.getCardNo()) - CardInHand.get(eCardNo.SecondCard.getCardNo()) == 1 
-				&& CardInHand.get(eCardNo.FourthCard.getCardNo())- CardInHand.get(eCardNo.ThirdCard.getCardNo()==1)
-				&& CardInhand.get(eCardNo.FifthCard.getCardNo())- CardInHand.get(eCardNo.FourthCard.getCardNo() == 1)){
+		if(h.CardsInHand.get(eCardNo.SecondCard.getCardNo()).getiCardNbr() - h.CardsInHand.get(eCardNo.FirstCard.getCardNo()).getiCardNbr() == 1
+				&& h.CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getiCardNbr() - h.CardsInHand.get(eCardNo.SecondCard.getCardNo()).getiCardNbr() == 1 
+				&& h.CardsInHand.get(eCardNo.FourthCard.getCardNo()).getiCardNbr() - h.CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getiCardNbr() ==1
+				&& h.CardsInHand.get(eCardNo.FifthCard.getCardNo()).getiCardNbr() - h.CardsInHand.get(eCardNo.FourthCard.getCardNo()).getiCardNbr() == 1){
 				bIsStraight = true;
 		}
 			}
-			
-		
-
 		return bIsStraight;
 	
 }
 
-	public static boolean isHandRoyalFlush(Hand h, HandScore hs) {
+	public static boolean isHandRoyalFlush(ArrayList<Card> cards, Card highCard, Hand h, HandScore hs) {
 
 		boolean isRoyalFlush = false;
-		if (bIsStraight == true && bIsFlush == true && h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).geteRank() == eRank.TEN
-				) {
+		if (Hand.isStraight(cards, highCard, h) == true && Hand.isHandFlush(cards, h) == false && h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).geteRank() == eRank.TEN) {
 			isRoyalFlush = true;
 			hs.setHandStrength(eHandStrength.RoyalFlush.getHandStrength());
-			
-			
 		}
 		return isRoyalFlush;
 	}
 
-	public static boolean isHandStraightFlush(Hand h, HandScore hs) {
+	public static boolean isHandStraightFlush(ArrayList<Card> cards, Card highCard, Hand h, HandScore hs) {
 		boolean isHandStraightFlush = false;
 		
-		if (bIsStraight == true && bIsFlush == true){
+		if (Hand.isStraight(cards, highCard, h) == true && Hand.isHandFlush(cards, h)== true){
 			
 			isHandStraightFlush = true;
 			hs.setHandStrength(eHandStrength.StraightFlush.getHandStrength());
